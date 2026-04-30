@@ -572,6 +572,10 @@ h1 {
         font-size: 0.85rem;
     }
 
+    .result-cards {
+        grid-template-columns: 1fr;
+    }
+
     .result-amount {
         font-size: 1.55rem;
     }
