@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Universal Syrup Calculator — Jeffrey Morgenthaler</title>
+    <meta name="description" content="Easily calculate 1:1 or 2:1 sugar syrups from any liquid using the Universal Syrup Calculator. Perfect for cocktails, fruit juices, and more." />
+    <meta name="keywords" content="syrup calculator, sugar syrup, 2:1 syrup, 1:1 syrup, cocktail syrup, Brix calculator, honey syrup, agave syrup, juice syrup, simple syrup, refractometer calculator, Jeffrey Morgenthaler" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#1a1008">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=VT323&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+    <div class="card">
+
+        <!-- Header -->
+        <header class="card-header">
+            <p class="eyebrow">The</p>
+            <h1>Universal Syrup<br>Calculator</h1>
+            <p class="byline">by <a href="https://jeffreymorgenthaler.com/universal-syrup-calculator/" target="_blank">Jeffrey Morgenthaler</a></p>
+            <p class="intro">This tool helps you calculate the amount of sugar or water needed to make perfect 1:1 or 2:1 sugar syrups from any liquid — fruit and vegetable juices, milks, and even liquid sugars such as honey or agave nectar.</p>
+            <a href="#" class="video-link" id="video-trigger" aria-label="Watch a video walkthrough of this process">
+                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M6 3.5l7 4.5-7 4.5V3.5z"/>
+                    <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                Watch a walkthrough
+            </a>
+        </header>
+
+        <div class="card-body">
+
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-label">
+                    <span class="step-num">Step 1</span>
+                    <h2 class="step-title">Weigh Your Liquid</h2>
+                </div>
+                <p class="step-desc">Weigh your liquid with a <a href="https://amzn.to/3SgPzZM" target="_blank">digital scale</a> and enter that value below.</p>
+                <div class="input-row">
+                    <span class="input-label">Weight</span>
+                    <input type="number" id="weight" min="0" step="any" aria-label="Liquid weight" placeholder="0">
+                    <select id="unit" aria-label="Unit of measurement">
+                        <option value="grams">grams</option>
+                        <option value="ounces">ounces</option>
+                        <option value="kilograms">kilograms</option>
+                        <option value="pounds">pounds</option>
+                    </select>
+                </div>
+                <span class="error-msg" id="weightError" role="alert"></span>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="step-label">
+                    <span class="step-num">Step 2</span>
+                    <h2 class="step-title">Measure Existing Sugar</h2>
+                </div>
+                <p class="step-desc">Use an <a href="https://amzn.to/46cc4EW" target="_blank">optical refractometer</a> to measure your liquid's Brix percentage, then enter it below and calculate.</p>
+                <div class="input-row">
+                    <span class="input-label">Brix</span>
+                    <input type="number" id="brix" min="0" max="100" step="any" aria-label="Initial Brix percentage" placeholder="0">
+                    <span class="suffix">%</span>
+                </div>
+                <span class="error-msg" id="brixError" role="alert"></span>
+            </div>
+
+            <button id="calculateButton" class="btn-calculate">Calculate</button>
+
+            <!-- Step 3: Results -->
+            <div class="results" id="results" aria-live="polite">
+                <div class="divider"></div>
+                <div class="step">
+                    <div class="step-label">
+                        <span class="step-num">Step 3</span>
+                        <h2 class="step-title">Assemble Your Syrup</h2>
+                    </div>
+                    <p class="step-desc">Using the quantities below, prepare your syrup according to the instructions that follow.</p>
+                </div>
+                <div class="result-cards">
+                    <div class="result-card">
+                        <div class="result-card-head">1:1 Syrup</div>
+                        <div class="result-card-body" id="result-1to1"></div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-card-head">2:1 Syrup</div>
+                        <div class="result-card-body" id="result-2to1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="instructions" id="instructions" aria-live="polite"></div>
+
+        </div><!-- /.card-body -->
+
+        <!-- Footer -->
+        <footer class="card-footer">
+            <p>If this tool saved you time, consider picking up a signed copy of one of <a href="https://jeffreymorgenthaler.com/book/" target="_blank">my books</a> — there's a lot more where this came from.</p>
+            <p class="license"><a href="https://syrupcalc.com/">Universal Syrup Calculator</a> by <a href="https://jeffreymorgenthaler.com/">Jeffrey Morgenthaler</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a></p>
+        </footer>
+
+    </div><!-- /.card -->
+</div><!-- /.page -->
+
+<!-- Video Modal -->
+<div class="modal-overlay" id="video-modal" role="dialog" aria-modal="true" aria-label="Video walkthrough">
+    <div class="modal-box">
+        <button class="modal-close" id="modal-close" aria-label="Close video">&times;</button>
+        <div class="video-container">
+            <iframe id="youtube-video" src="" frameborder="0" allowfullscreen title="Syrup calculator walkthrough video"></iframe>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade"></noscript>
+</body>
+</html>
